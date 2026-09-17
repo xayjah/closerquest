@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloserQuest — Turn cold calls into booked demos</title>
+  <meta name="description" content="CloserQuest gives software sales teams a simple system to find the right accounts, make better calls, and book more demos." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff714b'/%3E%3Cpath d='M9 16h10m-4-4 4 4-4 4M9 9h14v14H9z' fill='none' stroke='%230b1324' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <style>
+    :root { --ink:#f4f6fb; --muted:#98a6bd; --navy:#0b1324; --panel:#101b30; --line:#21304a; --orange:#ff714b; --mint:#92e6bd; --blue:#8db5ff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--navy); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.5; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1160px, calc(100% - 40px)); margin:auto; }
+    nav { height:78px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.08); }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:750; letter-spacing:-.03em; font-size:18px; }
+    .mark { display:grid; place-items:center; width:28px; height:28px; border-radius:9px; background:var(--orange); color:var(--navy); font-weight:900; }
+    .navlinks { display:flex; align-items:center; gap:28px; color:var(--muted); font-size:14px; }
+    .navlinks a:hover { color:var(--ink); }
+    .nav-cta, .hero-cta { background:var(--orange); color:var(--navy); padding:11px 17px; border-radius:8px; font-weight:750; }
+    .hero { padding:88px 0 76px; display:grid; grid-template-columns:1.02fr .98fr; gap:72px; align-items:center; }
+    .eyebrow { display:inline-flex; gap:8px; align-items:center; color:var(--mint); font-size:13px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+    .eyebrow i { display:block; width:7px; height:7px; background:var(--mint); border-radius:50%; box-shadow:0 0 0 5px rgba(146,230,189,.1); }
+    h1 { font-size:clamp(44px, 6vw, 74px); line-height:1.02; letter-spacing:-.065em; max-width:670px; margin:22px 0 24px; }
+    h1 span { color:var(--orange); }
+    .hero-copy { color:var(--muted); font-size:18px; max-width:530px; margin:0 0 32px; }
+    .actions { display:flex; align-items:center; gap:18px; }
+    .text-link { color:#c6d0e1; font-weight:650; font-size:14px; }
+    .text-link::after { content:' →'; color:var(--orange); }
+    .dashboard { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 24px 70px rgba(0,0,0,.23); transform:rotate(1.2deg); }
+    .dash-top { display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:12px; padding:3px 4px 16px; }
+    .dash-title { color:var(--ink); font-weight:700; }
+    .live { color:var(--mint); display:flex; align-items:center; gap:6px; }
+    .live b { width:6px; height:6px; border-radius:50%; background:var(--mint); }
+    .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-bottom:10px; }
+    .stat { background:#15223b; border:1px solid #223352; border-radius:9px; padding:12px; }
+    .stat small { display:block; color:var(--muted); font-size:11px; margin-bottom:7px; }
+    .stat strong { font-size:24px; letter-spacing:-.05em; }
+    .up { color:var(--mint); font-size:11px; margin-left:4px; }
+    .queue { background:#0e192c; border:1px solid #1d2b46; border-radius:9px; padding:12px; }
+    .queue-head, .lead { display:grid; grid-template-columns:1.3fr 1fr .65fr .35fr; gap:12px; align-items:center; }
+    .queue-head { color:#70809c; font-size:10px; text-transform:uppercase; letter-spacing:.08em; padding:3px 5px 9px; }
+    .lead { padding:12px 5px; border-top:1px solid #1d2b46; font-size:12px; }
+    .lead strong { display:block; font-size:13px; }
+    .lead span { color:var(--muted); }
+    .tag { display:inline-block; padding:4px 7px; border-radius:5px; background:rgba(255,113,75,.12); color:#ff997e; font-size:10px; font-weight:700; }
+    .phone { color:#cad4e4; text-align:right; font-size:16px; }
+    .proof { border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08); padding:22px 0; display:flex; gap:50px; align-items:center; color:#7788a2; font-size:12px; text-transform:uppercase; letter-spacing:.13em; }
+    .proof strong { color:#b4c0d5; font-size:14px; letter-spacing:-.02em; text-transform:none; }
+    .section { padding:105px 0; }
+    .section-head { max-width:600px; margin-bottom:44px; }
+    .section h2 { font-size:clamp(32px, 4vw, 52px); line-height:1.05; letter-spacing:-.055em; margin:14px 0 16px; }
+    .section p { color:var(--muted); font-size:17px; }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .card { border:1px solid var(--line); border-radius:12px; padding:25px; background:rgba(16,27,48,.65); }
+    .card-num { color:var(--orange); font-size:13px; font-weight:800; }
+    .card h3 { font-size:20px; margin:40px 0 8px; letter-spacing:-.03em; }
+    .card p { font-size:14px; margin:0; }
+    .band { background:var(--orange); color:var(--navy); border-radius:15px; padding:54px 58px; display:flex; justify-content:space-between; align-items:center; gap:30px; }
+    .band h2 { margin:0; max-width:620px; font-size:clamp(30px,4vw,47px); line-height:1.05; letter-spacing:-.055em; }
+    .band .hero-cta { background:var(--navy); color:var(--ink); white-space:nowrap; }
+    footer { padding:28px 0 38px; color:#7788a2; font-size:12px; display:flex; justify-content:space-between; }
+    .modal { position:fixed; inset:0; display:none; place-items:center; background:rgba(4,8,17,.78); z-index:3; padding:20px; }
+    .modal.open { display:grid; }
+    .modal-card { width:min(460px,100%); background:#111e34; border:1px solid var(--line); border-radius:15px; padding:28px; position:relative; }
+    .close { position:absolute; top:17px; right:19px; background:none; color:var(--muted); border:0; font-size:24px; cursor:pointer; }
+    .modal h2 { margin:0 0 8px; font-size:28px; letter-spacing:-.05em; }
+    .modal p { color:var(--muted); margin:0 0 20px; font-size:14px; }
+    label { display:block; color:#b7c3d8; font-size:12px; margin:13px 0 6px; }
+    input, select { width:100%; background:#0c1628; border:1px solid #263754; border-radius:7px; color:var(--ink); padding:11px 12px; font:inherit; outline:none; }
+    input:focus, select:focus { border-color:var(--orange); }
+    .submit { border:0; cursor:pointer; width:100%; margin-top:20px; background:var(--orange); color:var(--navy); border-radius:8px; padding:13px; font-weight:800; }
+    .success { display:none; color:var(--mint); font-size:14px; padding:18px 0 4px; }
+    @media (max-width:800px) { .wrap{width:min(100% - 28px, 620px)} .navlinks a:not(.nav-cta){display:none} .hero{grid-template-columns:1fr; gap:48px; padding:64px 0 58px} .dashboard{transform:none} .proof{gap:18px; flex-wrap:wrap} .cards{grid-template-columns:1fr} .section{padding:72px 0} .band{padding:34px 26px; display:block} .band .hero-cta{display:inline-block; margin-top:24px} footer{display:block} footer span{display:block; margin-top:8px} }
+  </style>
+</head>
+<body>
+  <header class="wrap"><nav><a class="brand" href="#top"><span class="mark">↗</span> closerquest</a><div class="navlinks"><a href="#how">How it works</a><a href="#teams">For sales teams</a><a class="nav-cta" href="#demo" data-open>Book a demo</a></div></nav></header>
+  <main id="top">
+    <section class="wrap hero"><div><div class="eyebrow"><i></i> Built for software sales</div><h1>Turn cold calls into <span>booked demos.</span></h1><p class="hero-copy">CloserQuest gives your team the focus, context, and follow-through to make more of the right calls—and turn live conversations into next steps.</p><div class="actions"><a class="hero-cta" href="#demo" data-open>See CloserQuest in action</a><a class="text-link" href="#how">See how it works</a></div></div><div class="dashboard" aria-label="CloserQuest call queue preview"><div class="dash-top"><span class="dash-title">Today’s call queue</span><span class="live"><b></b> Live workspace</span></div><div class="stat-row"><div class="stat"><small>Calls made</small><strong>38</strong><span class="up">+12%</span></div><div class="stat"><small>Conversations</small><strong>11</strong><span class="up">+4%</span></div><div class="stat"><small>Demos booked</small><strong>4</strong><span class="up">+33%</span></div></div><div class="queue"><div class="queue-head"><span>Account</span><span>Reason to call</span><span>Status</span><span></span></div><div class="lead"><div><strong>Northstar Labs</strong><span>VP Sales · 120 seats</span></div><span>New funding</span><span class="tag">Ready</span><span class="phone">↗</span></div><div class="lead"><div><strong>Fieldwire</strong><span>RevOps · 84 seats</span></div><span>Hiring SDRs</span><span class="tag">Ready</span><span class="phone">↗</span></div><div class="lead"><div><strong>Arc &amp; Beam</strong><span>Founder · 32 seats</span></div><span>Trial ending</span><span class="tag">Ready</span><span class="phone">↗</span></div></div></div></section>
+    <div class="wrap proof"><strong>One workflow for the whole team</strong><span>Target</span><span>Call</span><span>Qualify</span><span>Schedule</span><span>Learn</span></div>
+    <section class="wrap section" id="how"><div class="section-head"><div class="eyebrow">A better call block</div><h2>Less tab-switching. More real conversations.</h2><p>Give reps a clear next best action before the call starts, so every touch feels timely, relevant, and worth answering.</p></div><div class="cards"><article class="card"><div class="card-num">01 / FIND</div><h3>Know who to call next</h3><p>Prioritize accounts by fit, timing, and signal—not by whoever happens to be at the top of a list.</p></article><article class="card"><div class="card-num">02 / CALL</div><h3>Open with a reason</h3><p>Put useful account context and a simple talk track in front of reps when it matters: right before hello.</p></article><article class="card"><div class="card-num">03 / BOOK</div><h3>Keep momentum</h3><p>Move qualified conversations straight to a scheduled demo while the problem—and the interest—is still fresh.</p></article></div></section>
+    <section class="wrap" id="teams"><div class="band"><h2>Make every rep’s best hour count.</h2><a class="hero-cta" href="#demo" data-open>Book a 20-min walkthrough →</a></div></section>
+  </main>
+  <footer class="wrap"><span>© 2026 CloserQuest</span><span>Built for teams that still pick up the phone.</span></footer>
+  <div class="modal" id="demo" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><button class="close" aria-label="Close">×</button><h2 id="modal-title">See CloserQuest in action.</h2><p>Tell us where your team is today. We’ll show you the fastest path to more qualified demos.</p><form id="demo-form"><label for="name">Work email</label><input id="name" type="email" placeholder="you@company.com" required /><label for="team">Team size</label><select id="team"><option>1–5 reps</option><option>6–20 reps</option><option>21–50 reps</option><option>51+ reps</option></select><button class="submit" type="submit">Request my walkthrough</button></form><div class="success" id="success">You’re on the list. We’ll be in touch shortly.</div></div></div>
+  <script>
+    const modal = document.querySelector('.modal');
+    const openers = document.querySelectorAll('[data-open]');
+    const close = () => modal.classList.remove('open');
+    openers.forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('open'); document.querySelector('#name').focus(); }));
+    document.querySelector('.close').addEventListener('click', close);
+    modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    document.querySelector('#demo-form').addEventListener('submit', (e) => { e.preventDefault(); e.target.style.display='none'; document.querySelector('#success').style.display='block'; });
+  </script>
+</body>
+</html>
