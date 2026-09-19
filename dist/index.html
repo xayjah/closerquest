@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CloserQuest — Start your quest</title>
   <meta name="description" content="CloserQuest is building the next generation of sales crews for software and business services." />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23ff714b'/%3E%3Cpath d='M9 16h10m-4-4 4 4-4 4M9 9h14v14H9z' fill='none' stroke='%230b1324' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="sales-wizard-logo.png" />
   <style>
     :root { --ink:#f4f6fb; --muted:#98a6bd; --navy:#0b1324; --panel:#101b30; --line:#21304a; --orange:#ff714b; --mint:#92e6bd; --blue:#8db5ff; }
     * { box-sizing:border-box; }
@@ -14,20 +14,55 @@
     a { color:inherit; text-decoration:none; }
     .wrap { width:min(1160px, calc(100% - 40px)); margin:auto; }
     nav { height:78px; display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,.08); }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:750; letter-spacing:-.03em; font-size:18px; }
+    .brand { display:flex; align-items:center; gap:14px; font-weight:750; letter-spacing:-.03em; font-size:18px; }
+    .brand-word { display:inline-flex; align-items:baseline; letter-spacing:-.055em; font-size:22px; line-height:1; }
+    .brand-word b { color:var(--orange); font-weight:850; }
     .mark { display:grid; place-items:center; width:28px; height:28px; border-radius:9px; background:var(--orange); color:var(--navy); font-weight:900; }
+    .brand-mark { width:68px; height:68px; object-fit:contain; display:block; transform:translateY(5px); }
     .navlinks { display:flex; align-items:center; gap:28px; color:var(--muted); font-size:14px; }
     .navlinks a:hover { color:var(--ink); }
     .nav-cta, .hero-cta { background:var(--orange); color:var(--navy); padding:11px 17px; border-radius:8px; font-weight:750; }
-    .hero { padding:88px 0 76px; display:grid; grid-template-columns:1.02fr .98fr; gap:72px; align-items:center; }
-    .eyebrow { display:inline-flex; gap:8px; align-items:center; color:var(--mint); font-size:13px; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
-    .eyebrow i { display:block; width:7px; height:7px; background:var(--mint); border-radius:50%; box-shadow:0 0 0 5px rgba(146,230,189,.1); }
+    .sales-button { background:transparent; color:var(--ink); border:1px solid var(--line); }
+    .sales-button:hover { background:var(--panel); border-color:#536682; }
+    .hero { padding:88px 0 76px; display:grid; grid-template-columns:1fr; gap:72px; align-items:center; }
     h1 { font-size:clamp(44px, 6vw, 74px); line-height:1.02; letter-spacing:-.065em; max-width:670px; margin:22px 0 24px; }
     h1 span { color:var(--orange); }
     .hero-copy { color:var(--muted); font-size:18px; max-width:530px; margin:0 0 32px; }
+    .crew-hero { width:100%; display:block; aspect-ratio:1660 / 948; object-fit:cover; object-position:center; border:1px solid var(--line); border-radius:16px; margin:10px 0 28px; box-shadow:0 28px 80px rgba(0,0,0,.28); }
     .actions { display:flex; align-items:center; gap:18px; }
     .text-link { color:#c6d0e1; font-weight:650; font-size:14px; }
     .text-link::after { content:' →'; color:var(--orange); }
+    .liberation { padding:96px 0 72px; display:grid; grid-template-columns:1.05fr .95fr; gap:72px; align-items:end; }
+    .liberation h2 { font-size:clamp(38px,5vw,64px); line-height:1; letter-spacing:-.065em; margin:16px 0 0; max-width:650px; }
+    .liberation h2 span { color:var(--orange); }
+    .liberation-copy { color:var(--muted); font-size:17px; line-height:1.6; max-width:470px; }
+    .liberation-copy p { margin:0 0 18px; }
+    .liberation-points { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:26px; }
+    .liberation-point { border-top:1px solid var(--line); padding-top:12px; color:#cbd4e2; font-size:14px; }
+    .company-section { padding:96px 0 84px; }
+    .company-head { display:flex; justify-content:space-between; gap:44px; align-items:end; margin-bottom:38px; }
+    .company-head h2 { font-size:clamp(36px,5vw,62px); line-height:1; letter-spacing:-.065em; margin:14px 0 0; max-width:650px; }
+    .company-head h2 span { color:var(--orange); }
+    .company-head p { color:var(--muted); font-size:17px; line-height:1.6; max-width:390px; margin:0; }
+    .company-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .company-card { border:1px solid var(--line); border-radius:12px; padding:25px; background:rgba(16,27,48,.65); min-height:210px; }
+    .company-card b { color:var(--orange); font-size:12px; letter-spacing:.12em; }
+    .company-card h3 { margin:34px 0 9px; font-size:21px; letter-spacing:-.03em; }
+    .company-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
+    .tools-section { padding:18px 0 28px; overflow:hidden; }
+    .tools-head { display:flex; align-items:end; justify-content:space-between; gap:30px; margin-bottom:18px; }
+    .tools-section + .liberation { padding-top:52px; }
+    .tools-head h2 { margin:10px 0 0; font-size:clamp(28px,4vw,44px); line-height:1; letter-spacing:-.055em; }
+    .tools-head p { color:var(--muted); max-width:360px; margin:0; font-size:14px; }
+    .logo-window { overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:20px 0; mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+    .logo-track { display:flex; width:max-content; animation:tools-scroll 62s linear infinite; animation-play-state:paused; will-change:transform; }
+    .logo-track.ready { animation-play-state:running; }
+    .tool-logo { display:flex; align-items:center; gap:10px; margin-right:42px; color:#c9d3e2; font-size:15px; font-weight:750; white-space:nowrap; }
+    .tool-logo img { width:auto; max-width:88px; height:28px; flex:0 0 auto; object-fit:contain; filter:brightness(0) invert(1); opacity:.88; }
+    .tool-logo.tiktok { height:28px; overflow:hidden; }
+    .tool-logo.tiktok img { height:56px; max-width:134px; }
+    .tool-logo.missing::before { content:attr(data-initial); display:grid; place-items:center; width:28px; height:28px; border:1px solid #405170; border-radius:8px; color:var(--orange); font-size:11px; font-weight:800; }
+    @keyframes tools-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
     .dashboard { background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 24px 70px rgba(0,0,0,.23); transform:rotate(1.2deg); }
     .dash-top { display:flex; justify-content:space-between; align-items:center; color:var(--muted); font-size:12px; padding:3px 4px 16px; }
     .dash-title { color:var(--ink); font-weight:700; }
@@ -64,6 +99,12 @@
     .manifesto-card { border:1px solid var(--line); border-radius:12px; padding:24px; background:#0e192c; }
     .manifesto-card h3 { margin:8px 0 8px; font-size:20px; letter-spacing:-.03em; }
     .manifesto-card p { margin:0; font-size:14px; }
+    .lore-section { padding-top:20px; }
+    .lore-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:34px; }
+    .lore-card { min-height:205px; border:1px solid var(--line); border-radius:12px; padding:24px; background:linear-gradient(145deg,rgba(16,27,48,.88),rgba(10,19,35,.7)); }
+    .lore-card span { color:var(--orange); font-size:11px; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+    .lore-card h3 { margin:46px 0 10px; font-size:22px; letter-spacing:-.04em; }
+    .lore-card p { margin:0; color:var(--muted); font-size:14px; line-height:1.55; }
     .crew-strip { margin-top:36px; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:14px 0; color:#8392aa; font-size:12px; letter-spacing:.11em; text-transform:uppercase; white-space:nowrap; }
     .crew-strip span { margin-right:32px; }
     .crew-strip b { color:var(--orange); margin-right:8px; }
@@ -75,23 +116,33 @@
     .modal h2 { margin:0 0 8px; font-size:28px; letter-spacing:-.05em; }
     .modal p { color:var(--muted); margin:0 0 20px; font-size:14px; }
     label { display:block; color:#b7c3d8; font-size:12px; margin:13px 0 6px; }
-    input, select { width:100%; background:#0c1628; border:1px solid #263754; border-radius:7px; color:var(--ink); padding:11px 12px; font:inherit; outline:none; }
-    input:focus, select:focus { border-color:var(--orange); }
+    input, select, textarea { width:100%; background:#0c1628; border:1px solid #263754; border-radius:7px; color:var(--ink); padding:11px 12px; font:inherit; outline:none; }
+    input:focus, select:focus, textarea:focus { border-color:var(--orange); }
+    textarea { min-height:92px; resize:vertical; }
     .submit { border:0; cursor:pointer; width:100%; margin-top:20px; background:var(--orange); color:var(--navy); border-radius:8px; padding:13px; font-weight:800; }
     .success { display:none; color:var(--mint); font-size:14px; padding:18px 0 4px; }
     @media (max-width:800px) { .wrap{width:min(100% - 28px, 620px)} .navlinks a:not(.nav-cta){display:none} .hero{grid-template-columns:1fr; gap:48px; padding:64px 0 58px} .dashboard{transform:none} .proof{gap:18px; flex-wrap:wrap} .cards{grid-template-columns:1fr} .section{padding:72px 0} .band{padding:34px 26px; display:block} .band .hero-cta{display:inline-block; margin-top:24px} footer{display:block} footer span{display:block; margin-top:8px} }
+    @media (max-width:800px) { .liberation { grid-template-columns:1fr; gap:36px; padding:72px 0 56px; } }
+    @media (max-width:800px) { .company-section { padding:72px 0 58px; } .company-head { display:block; } .company-head p { margin-top:22px; } .company-grid { grid-template-columns:1fr; } }
+    @media (max-width:800px) { .lore-section { padding-top:0; } .lore-grid { grid-template-columns:1fr; } }
+    @media (max-width:800px) { .tools-section { padding:18px 0 36px; } .tools-head { display:block; } .tools-head p { margin-top:20px; } }
   </style>
 </head>
 <body>
-  <header class="wrap"><nav><a class="brand" href="#top"><span class="mark">↗</span> closerquest</a><div class="navlinks"><a href="#how">The mission</a><a href="#teams">For companies</a><a class="nav-cta" href="#demo" data-open>Start your quest</a></div></nav></header>
+  <header class="wrap"><nav><a class="brand" href="#top"><img class="brand-mark" src="sales-wizard-logo.png" alt="" /><span class="brand-word">closer<b>quest</b></span></a><div class="navlinks"><a href="#how">The mission</a><a href="#teams">For companies</a><a href="blog.html">Field notes</a><a class="nav-cta" href="#demo" data-open>Start your sales quest</a></div></nav></header>
   <main id="top">
-    <section class="wrap hero"><div><div class="eyebrow"><i></i> A new kind of sales crew</div><h1>Start your <span>quest.</span></h1><p class="hero-copy">We’re building the next generation of sales crews for companies that sell software and business services. Our reps prospect, cold call, qualify leads, and book demos.</p><div class="actions"><a class="hero-cta" href="#demo" data-open>Join the founding crew</a><a class="text-link" href="#how">See the mission</a></div><div class="crew-strip"><span><b>LIVE</b> Founding crew forming now</span><span>Talk · Signal · Close</span></div></div><div class="dashboard" aria-label="CloserQuest quest board preview"><div class="dash-top"><span class="dash-title">The quest board</span><span class="live"><b></b> Open missions</span></div><div class="stat-row"><div class="stat"><small>Signals found</small><strong>38</strong><span class="up">today</span></div><div class="stat"><small>Conversations</small><strong>11</strong><span class="up">live</span></div><div class="stat"><small>Next steps</small><strong>4</strong><span class="up">claimed</span></div></div><div class="queue"><div class="queue-head"><span>Mission</span><span>Signal</span><span>Status</span><span></span></div><div class="lead"><div><strong>Northstar Labs</strong><span>New territory · software</span></div><span>New funding</span><span class="tag">Open</span><span class="phone">↗</span></div><div class="lead"><div><strong>Fieldwire</strong><span>Fresh signal · business</span></div><span>Hiring SDRs</span><span class="tag">Open</span><span class="phone">↗</span></div><div class="lead"><div><strong>Arc &amp; Beam</strong><span>Warm route · services</span></div><span>Trial ending</span><span class="tag">Open</span><span class="phone">↗</span></div></div></div></section>
-    <div class="wrap proof"><strong>One crew. Many quests.</strong><span>Find signal</span><span>Make contact</span><span>Earn trust</span><span>Book the next step</span><span>Level up</span></div>
-    <section class="wrap section" id="how"><div class="section-head"><div class="eyebrow">The mission</div><h2>Build the muscle. Find your lane. Get paid for outcomes.</h2><p>CloserQuest is a place for people who want to get seriously good at sales—and for companies that need a crew willing to create momentum from a blank page.</p></div><div class="cards"><article class="card"><div class="card-num">01 / ENTER</div><h3>Start with the signal</h3><p>Learn to spot the moment a company is ready for a better tool, a better process, or a better conversation.</p></article><article class="card"><div class="card-num">02 / MOVE</div><h3>Make the call count</h3><p>Bring curiosity, clarity, and a little nerve. Every conversation is a rep, a story, and a new route on the map.</p></article><article class="card"><div class="card-num">03 / ASCEND</div><h3>Stack real wins</h3><p>Build a track record, sharpen your craft, and unlock more responsibility as the crew grows. Upside follows results.</p></article></div><div class="manifesto"><div class="manifesto-card"><div class="card-num">FOR THE CREW</div><h3>Not a normal job board.</h3><p>Bring your voice, your ambition, and your appetite for learning. We’re assembling people who want to help shape the playbook.</p></div><div class="manifesto-card"><div class="card-num">FOR COMPANIES</div><h3>Need a crew?</h3><p>We build sales crews for companies that sell software and business services. The details get clearer when the right people are in the room.</p></div></div></section>
-    <section class="wrap" id="teams"><div class="band"><h2>There’s a lot of money in getting good at the conversation.</h2><a class="hero-cta" href="#demo" data-open>Start the conversation →</a></div></section>
+    <section class="wrap hero"><div><h1>Start your <span>quest.</span></h1><p class="hero-copy">We’re building the next generation of sales crews for companies that sell software and business services. Our reps prospect, cold call, qualify leads, book demos, and close deals.</p><div class="actions"><a class="hero-cta" href="#demo" data-open>Start your sales quest</a><a class="hero-cta sales-button" href="#business" data-business-open>Sales</a></div><div class="crew-strip"><span><b>LIVE</b> Founding crew forming now</span><span>Talk · Signal · Close</span></div></div></section>
+    <section class="wrap tools-section"><div class="tools-head"><div><h2>The wizard works with most of the businesses everyone already uses.</h2></div></div><div class="logo-window" aria-label="Business tools from the Luciint project slider"><div class="logo-track" id="logo-track"></div></div></section>
+    <section class="wrap liberation"><div><div class="eyebrow">LIBERATION THROUGH SALES</div><h2>Learn the skill that gives you <span>leverage.</span></h2></div><div class="liberation-copy"><p>Sales is one of the few skills that travels with you. Get good at starting conversations, finding real problems, and creating momentum—and you can build opportunity almost anywhere.</p><p>CloserQuest is for people who want more than a job. Build your confidence, own your outcomes, and turn every conversation into another door.</p><div class="liberation-points"><div class="liberation-point">More control over your path</div><div class="liberation-point">Income tied to real outcomes</div><div class="liberation-point">A skill that compounds</div><div class="liberation-point">A crew that moves with you</div></div></div></section>
+    <section class="wrap section" id="how"><div class="section-head"><h2>Build your muscle. Find your lane. Get paid for outcomes.</h2><p>CloserQuest is a place for people who want to get seriously good at sales—and for companies that need a crew willing to create momentum from a blank page.</p></div><div class="manifesto"><div class="manifesto-card"><div class="card-num">FOR THE CREW</div><h3>Not a normal job board.</h3><p>Bring your voice, your ambition, and your appetite for learning. We’re assembling people who want to help shape the playbook.</p></div><div class="manifesto-card"><div class="card-num">FOR COMPANIES</div><h3>Need a crew?</h3><p>We build sales crews for companies that sell software and business services. The details get clearer when the right people are in the room.</p></div></div></section>
+    <section class="wrap company-section" id="teams"><div class="company-head"><div><div class="eyebrow">FOR COMPANIES</div><h2>More conversations. Better <span>momentum.</span></h2></div><p>Bring us a product, a market, or a territory. We build the crew that turns early signal into qualified conversations and booked demos.</p></div><div class="company-grid"><article class="company-card"><h3>Start a new motion</h3><p>Test a message, open a market, or give a new offer its first real conversations.</p></article><article class="company-card"><h3>Find the right signal</h3><p>Our reps prospect, cold call, qualify leads, and surface the moments worth a closer’s time.</p></article><article class="company-card"><h3>Build the next layer</h3><p>Turn what we learn into a repeatable playbook your team can keep using as you grow.</p></article></div></section>
+    <section class="wrap section lore-section"><div class="section-head"><div class="eyebrow">THE CLOSER’S QUEST</div><h2>Closers with the quest of closing.</h2><p>The playbook changes when the room changes. Stay curious, find the signal, and make the next move feel inevitable.</p></div><div class="lore-grid"><article class="lore-card"><span>01 · Read the room</span><h3>Every no has a map inside it.</h3><p>Listen for the turn. The useful part is usually hiding one question deeper.</p></article><article class="lore-card"><span>02 · Move the signal</span><h3>Momentum is a team sport.</h3><p>One good conversation becomes a pattern when the crew knows what to do next.</p></article><article class="lore-card"><span>03 · Keep the door open</span><h3>The close is only a checkpoint.</h3><p>Leave every exchange clearer, sharper, and ready for the next quest.</p></article></div></section>
+    <section class="wrap section lore-section"><div class="manifesto"><div class="manifesto-card"><div class="card-num">FIELD NOTE</div><h3>Make the invisible obvious.</h3><p>There is always a signal before the signal. Learn to spot it, name it, and move with it.</p></div><div class="manifesto-card"><div class="card-num">CREW CODE</div><h3>Stay useful. Stay dangerous.</h3><p>Bring energy to the room, clarity to the handoff, and a little magic to the follow-up.</p></div></div></section>
+    <section class="wrap"><div class="band"><h2>There’s a lot of money in getting good at the conversation.</h2><a class="hero-cta" href="#demo" data-open>Start your sales quest</a></div></section>
   </main>
   <footer class="wrap"><span>© 2026 CloserQuest</span><span>Start small. Move fast. Build the crew.</span></footer>
-  <div class="modal" id="demo" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><button class="close" aria-label="Close">×</button><h2 id="modal-title">Start your quest.</h2><p>Tell us whether you’re here to join the crew or bring a mission. We’ll take it from there.</p><form id="demo-form"><label for="name">Email</label><input id="name" type="email" placeholder="you@company.com" required /><label for="team">I’m here to…</label><select id="team"><option>Join the founding sales crew</option><option>Bring a software sales mission</option><option>Explore both</option></select><button class="submit" type="submit">Send the signal</button></form><div class="success" id="success">Signal received. We’ll be in touch shortly.</div></div></div>
+  <div class="modal" id="demo" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-card"><button class="close" aria-label="Close">×</button><h2 id="modal-title">Start your quest.</h2><p>Leave your details and we’ll take it from there.</p><form id="demo-form"><label for="name">Name *</label><input id="name" type="text" placeholder="Your name" required aria-required="true" /><label for="phone">Phone number *</label><input id="phone" type="tel" placeholder="(555) 555-5555" required aria-required="true" /><label for="email">Email *</label><input id="email" type="email" placeholder="you@company.com" required aria-required="true" /><label for="experience">Sales experience <span class="optional">(optional)</span></label><textarea id="experience" placeholder="No sales experience required—as long as you can make magic happen. Motivation matters more than years of education."></textarea><button class="submit" type="submit">Start your sales quest</button></form><div class="success" id="success">Signal received. We’ll be in touch shortly.</div></div></div>
+  <div class="modal" id="business" role="dialog" aria-modal="true" aria-labelledby="business-title"><div class="modal-card"><button class="close" aria-label="Close">×</button><h2 id="business-title">Build your sales crew.</h2><p>Tell us what you sell and where you want more conversations.</p><form id="business-form"><label for="business-name">Company name *</label><input id="business-name" type="text" placeholder="Your company" required aria-required="true" /><label for="business-contact">Your name *</label><input id="business-contact" type="text" placeholder="Your name" required aria-required="true" /><label for="business-phone">Phone number *</label><input id="business-phone" type="tel" placeholder="(555) 555-5555" required aria-required="true" /><label for="business-email">Work email *</label><input id="business-email" type="email" placeholder="you@company.com" required aria-required="true" /><label for="business-goal">What are you selling? *</label><textarea id="business-goal" placeholder="Software, services, or the next big thing." required aria-required="true"></textarea><button class="submit" type="submit">Start your sales quest</button></form><div class="success" id="business-success">Signal received. We’ll be in touch shortly.</div></div></div>
   <script>
     const modal = document.querySelector('.modal');
     const openers = document.querySelectorAll('[data-open]');
@@ -99,8 +150,23 @@
     openers.forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('open'); document.querySelector('#name').focus(); }));
     document.querySelector('.close').addEventListener('click', close);
     modal.addEventListener('click', (e) => { if (e.target === modal) close(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); if (typeof closeBusiness === 'function') closeBusiness(); } });
     document.querySelector('#demo-form').addEventListener('submit', (e) => { e.preventDefault(); e.target.style.display='none'; document.querySelector('#success').style.display='block'; });
+    const businessModal = document.querySelector('#business');
+    const businessOpeners = document.querySelectorAll('[data-business-open]');
+    const closeBusiness = () => businessModal.classList.remove('open');
+    businessOpeners.forEach((el) => el.addEventListener('click', (e) => { e.preventDefault(); businessModal.classList.add('open'); document.querySelector('#business-name').focus(); }));
+    businessModal.querySelector('.close').addEventListener('click', closeBusiness);
+    businessModal.addEventListener('click', (e) => { if (e.target === businessModal) closeBusiness(); });
+    document.querySelector('#business-form').addEventListener('submit', (e) => { e.preventDefault(); e.target.style.display='none'; document.querySelector('#business-success').style.display='block'; });
+    const luciintTools = [
+      ['clio.DLPOzvUy_ZeFPiY.webp','Clio',false], ['brand-youtube.svg','YouTube',false], ['shopify.svg','Shopify'], ['brand-square.svg','Square',false], ['tiktok.Cd37jEUm_Z1busvu.webp','TikTok',false], ['brand-airtable.svg','Airtable'], ['quickbooks.svg','QuickBooks'], ['brand-pinterest.svg','Pinterest',false], ['wave.BKP8u1tP_ZfwwnN.webp','Wave'], ['yelp.svg','Yelp'], ['brand-adyen.svg','Adyen',false], ['slack.CWqOO3uF_1zXcdq.webp','Slack'], ['woocommerce.svg','Woo',false], ['shippo.DzUDjc9r_1c9k0b.webp','Shippo',false], ['printful.CpjL7i9Z_hna46.webp','Printful',false], ['zapier.dLU-SC1F_Z22vrUN.webp','Zapier',false], ['whatsapp.svg','WhatsApp',false], ['brand-threads.svg','Threads',false], ['brand-bluesky.svg','Bluesky'], ['brand-calendly.svg','Calendly',false], ['brand-notion.svg','Notion',false], ['stripe.IU5JN7o__lYyiu.webp','Stripe',false], ['brand-microsoft.DOygKdc-_q8jNb.webp','Microsoft',false], ['brand-clickup.svg','ClickUp'], ['instagram.svg','Instagram',false], ['brand-make.svg','Make'], ['xero.svg','Xero',false], ['brand-typeform.svg','Typeform',false], ['authorize-net.bqsBpv6K_Zl63A.webp','Authorize.net',false], ['brand-basecamp.svg','Basecamp'], ['shipstation.DY98wYC__Z1Foxve.webp','ShipStation',false], ['nmi.ffL5lisO_x6PBn.webp','NMI',false], ['brand-zoom.svg','Zoom',false], ['facebook.svg','Facebook',false], ['printify.CD3gP56X_Z16Vr3S.webp','Printify',false], ['google-calendar.BE9uz7b4_215Tam.webp','Google Calendar'], ['brand-paypal.svg','PayPal'], ['brand-x.svg','X',false], ['brand-messenger.svg','Messenger',false]
+    ];
+    const logoTrack = document.querySelector('#logo-track');
+    const renderTool = ([asset, name, showName = true]) => { const item = document.createElement('span'); const className = name === 'Google Business Profile' ? 'google-business-profile' : name.toLowerCase().replace(/[^a-z]+/g,'-'); item.className=`tool-logo ${className}${name === 'TikTok' ? ' tiktok' : ''}`; item.dataset.initial=name.replace(/[^A-Za-z]/g,'').slice(0,1).toUpperCase(); item.innerHTML=`<img src="luciint-logos/${asset}" alt="${name} logo" decoding="async" />${showName ? `<span>${name}</span>` : ''}`; const image=item.querySelector('img'); image.addEventListener('error', () => { image.remove(); item.classList.add('missing'); }); return item; };
+    const mixedTools = [...luciintTools].sort((a, b) => { const score = (value) => [...value].reduce((total, char, index) => total + char.charCodeAt(0) * (index + 3), 0) % 997; return score(a[0]) - score(b[0]); });
+    [...mixedTools, ...mixedTools].forEach((tool) => logoTrack.appendChild(renderTool(tool)));
+    Promise.all([...logoTrack.querySelectorAll('img')].map((image) => image.complete ? Promise.resolve() : new Promise((resolve) => { image.addEventListener('load', resolve, { once:true }); image.addEventListener('error', resolve, { once:true }); }))).then(() => logoTrack.classList.add('ready'));
   </script>
 </body>
 </html>
